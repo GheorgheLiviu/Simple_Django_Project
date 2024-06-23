@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Send a feedback {% endblock %}
+
+{% block content %}
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br><br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Leave a feedback</h3>
+                    </div>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            {{ form.as_p }}
+                        </div>
+
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-outline-success">Add new Feedback</button>
+                            <a href="{% url 'list-of-feedbacks' %}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

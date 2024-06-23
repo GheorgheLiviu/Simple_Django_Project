@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Detail - {{ student }} {% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br><br><br>
+                <div class="card text-center">
+                    <div class="card-header">
+                        {% if student.profile %}
+                            <img src="{{ student.profile.url }}" style='width: 60px; height: 70px'
+                                 alt="No Image Found">
+                        {% else %}
+                            {% if student.gender == "male" %}
+                                <img src="{% static 'images/img_male.png' %}" alt="No Image"
+                                     style='width: 60px; height: 70px'>
+                            {% else %}
+                                <img src="{% static 'images/img_female.png' %}" alt="No Image"
+                                     style='width: 60px; height: 70px'>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ student }}</h5>
+                        <p class="card-text">
+                            <Strong>Email:</Strong> {{ student.email }}
+                            <br>
+                            <Strong>Trainer:</Strong> {{ student.trainer }}
+                            <br>
+                            <Strong>Age:</Strong> {{ student.age }}
+                        </p>
+                        <a href="{% url 'list-of-students' %}" class="btn btn-primary">Cancel</a>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        Created at : {{ student.created_at|date:'d-m-Y H:i:s' }}  / Updated at: {{ student.updated_at|date:'d-m-Y H:i:s' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

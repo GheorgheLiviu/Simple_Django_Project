@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Detail - {{feedback}} {% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br><br><br>
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h4>Feedback Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ feedback.first_name }} {{ feedback.last_name }}</h5>
+                        <p class="card-text">
+                            <Strong>Email:</Strong> {{ feedback.email }}
+                            <br>
+                            <Strong>Trainer:</Strong> {{ feedback.trainer }}
+                            <br>
+                            <Strong>Message:</Strong> {{ feedback.message }}
+                        </p>
+                        <a href="{% url 'list-of-feedbacks' %}" class="btn btn-primary">Cancel</a>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        Created at : {{ feedback.created_at|date:'d-m-Y H:i:s' }}  / Updated at: {{ feedback.updated_at|date:'d-m-Y H:i:s' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
